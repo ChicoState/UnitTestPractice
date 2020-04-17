@@ -5,7 +5,7 @@ using std::string;
 
 // Receive three integers and rearrange their values so that they are in
 // descending order from greatest (first) to least (third)
-void sortDescending(int & first, int & second, int & third)
+void Practice::sortDescending(int & first, int & second, int & third)
 {
   if( first < second )
   {
@@ -30,7 +30,7 @@ void sortDescending(int & first, int & second, int & third)
 // Receive a string and return whether or not it is strictly a palindrome,
 // where it is spelled the same backwards and forwards when considering every
 // character in the string, but disregarding case ('x' is the same as 'X')
-bool isPalindrome(string input)
+bool Practice::isPalindrome(string input)
 {
   for(int i=0; i < input.size(); i++)
   {
