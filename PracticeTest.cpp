@@ -28,3 +28,14 @@ TEST(PracticeTest, is_not_a_palindrome)
     bool actual = obj.isPalindrome("Ba");
     ASSERT_FALSE(actual);
 }
+
+TEST(PracticeTest, is_sorted_decending)
+{
+    int first = 1;
+    int second = 5;
+    int third = 7;
+
+    Practice obj;
+    bool actual = obj.sortDescending(first, second, third);
+    ASSERT_TRUE(actual);
+}
