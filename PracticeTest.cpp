@@ -17,7 +17,7 @@ class PracticeTest : public ::testing::Test
 TEST(PracticeTest, is_simple_palindrome)
 {
     Practice obj;
-    bool actual = obj.isPalindrome("aa");
+    bool actual = obj.isPalindrome("Aba");
     ASSERT_TRUE(actual);
 }
 
