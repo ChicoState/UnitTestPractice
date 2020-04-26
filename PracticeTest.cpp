@@ -39,3 +39,14 @@ TEST(PracticeTest, is_sorted_decending)
     bool actual = obj.sortDescending(first, second, third);
     ASSERT_TRUE(actual);
 }
+
+TEST(PracticeTest, is_sorted_decending)
+{
+    int first = 6;
+    int second = 2;
+    int third = 7;
+
+    Practice obj;
+    bool actual = obj.sortDescending(first, second, third);
+    ASSERT_TRUE(actual);
+}
