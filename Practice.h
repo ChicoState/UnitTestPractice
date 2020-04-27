@@ -8,7 +8,7 @@ using std::string;
 class Practice
 {
 public:
-  void sortDescending(int & first, int & second, int & third);
+  bool sortDescending(int & first, int & second, int & third);
   bool isPalindrome(string input);
 };
 
