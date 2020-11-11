@@ -5,6 +5,7 @@ LABEL version=0.1
 ENV GTEST_REPO=/googletest
 ENV GTEST_DIR=${GTEST_REPO}/googletest
 ENV CXXFLAGS=-std=c++11
+ENV WORKDIR=/usr/src
 WORKDIR /usr/src
 
 # Install dependencies
@@ -28,4 +29,4 @@ RUN git clone https://github.com/google/googletest ${GTEST_REPO} && \
 # Build and run tests
 CMD ["make","clean"]
 CMD ["make"]
-CMD ["./PracticeTest"]
+CMD ["sh","-c","${WORKDIR}/PracticeTest"]
