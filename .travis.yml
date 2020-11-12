@@ -4,12 +4,14 @@ language: cpp
 
 before_install:
   - export CURRENT_PROJ_DIR=$(pwd)
-  - mkdir gtest
-  - cd gtest
-  - git clone https://github.com/google/googletest.git
-  - cd googletest/googletest
+  - git clone https://github.com/google/googletest.git /gtest
+  - cd /gtest/googletest/googletest
   - export GTEST_DIR=$(pwd)
-  - cmake ${GTEST_DIR}
+  - mkdir build
+  - cd build
+  - cmake .. -DBUILD_GMOCK=OFF
+  - make
+  - make install
   - cd ${CURRENT_PROJ_DIR}
   - pip install --user cpp-coveralls
 
