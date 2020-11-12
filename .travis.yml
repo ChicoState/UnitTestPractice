@@ -11,7 +11,7 @@ before_install:
   - cd build
   - cmake .. -DBUILD_GMOCK=OFF
   - make
-  - make install
+  - sudo make install
   - cd ${CURRENT_PROJ_DIR}
   - pip install --user cpp-coveralls
 
