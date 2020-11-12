@@ -1,5 +1,6 @@
 # UnitTestPractice
 
+[![Build Status](https://travis-ci.org/ChicoState/UnitTestPractice.svg?branch=master)](https://travis-ci.org/ChicoState/UnitTestPractice)
 
 [![Coverage Status](https://coveralls.io/repos/github/ChicoState/UnitTestPractice/badge.svg?branch=master)](https://coveralls.io/github/ChicoState/UnitTestPractice?branch=master)
 
