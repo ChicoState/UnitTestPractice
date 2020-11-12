@@ -9,7 +9,7 @@ before_install:
   - export GTEST_DIR=$(pwd)
   - mkdir build
   - cd build
-  - cmake .. -DBUILD_GMOCK=OFF
+  - cmake ..
   - make
   - make install
   - cd ${CURRENT_PROJ_DIR}
