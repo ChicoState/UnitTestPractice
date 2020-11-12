@@ -27,7 +27,6 @@ RUN git clone https://github.com/google/googletest ${GTEST_REPO} && \
     cd ${WORKDIR}
 
 # Build and run tests
-# CMD ["make","clean"]
-# CMD ["make"]
-# CMD ["make","test"]
-# CMD ["sh","-c","${WORKDIR}/PracticeTest"]
+CMD ["make","clean"]
+CMD ["make"]
+CMD ["sh","-c","${WORKDIR}/PracticeTest"]
