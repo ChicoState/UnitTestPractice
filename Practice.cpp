@@ -57,3 +57,19 @@ bool Practice::isPalindrome(string input)
   }
   return true;
 }
+
+// This function receives a string and counts how many times the same character
+// is repeated at the beginning of the string, before any other characters. The
+// function is case sensative so 'Z' is different than 'z'.
+int Practice::count_starting_repeats(string word)
+{
+    int repetition = 1;
+    int index = 0;
+    
+    while( index < word.length()-1 && word[index] == word[index+1] ){
+      repetition++;
+      index++;
+    }
+
+    return repetition;
+}
