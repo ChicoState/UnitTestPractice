@@ -8,9 +8,8 @@ using std::string;
 class Practice
 {
 public:
-  bool sortDescending(int & first, int & second, int & third);
+  void sortDescending(int & first, int & second, int & third);
   bool isPalindrome(string input);
   int count_starting_repeats(string word);
-
 };
 #endif
