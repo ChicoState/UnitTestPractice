@@ -27,4 +27,4 @@ RUN git clone https://github.com/google/googletest ${GTEST_REPO} && \
     cd ${WORKDIR}
 
 # Build and run tests
-CMD ["sh","-c","${WORKDIR}/test_runner.sh"]
+CMD sh -c ${WORKDIR}/test_runner.sh
