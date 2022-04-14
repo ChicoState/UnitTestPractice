@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test in container
-      - run: docker run -d gtest sh ./test_runner.sh
+        run: docker run -d gtest sh ./test_runner.sh
