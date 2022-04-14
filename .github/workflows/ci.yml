@@ -12,4 +12,4 @@ jobs:
       - name: Build container image
         run: docker build -t gtest .
       - name: Test in container
-        run: docker run -d gtest sh ./test_runner.sh
+        run: docker run -t gtest
