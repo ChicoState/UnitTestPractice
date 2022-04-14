@@ -7,6 +7,7 @@ ENV GTEST_DIR=${GTEST_REPO}/googletest
 ENV CXXFLAGS=-std=c++11
 ENV WORKDIR=/usr/src
 WORKDIR /usr/src
+COPY . ${WORKDIR}
 
 # Install dependencies
 RUN apt-get update && \
@@ -15,7 +16,8 @@ RUN apt-get update && \
             build-essential \
             g++ \
             cmake \
-            git-all
+            git-all \
+            dos2unix
 
 # Setup GoogleTest
 RUN git clone https://github.com/google/googletest ${GTEST_REPO} && \
@@ -25,6 +27,9 @@ RUN git clone https://github.com/google/googletest ${GTEST_REPO} && \
     make && \
     make install && \
     cd ${WORKDIR}
+
+# Assure Unix linefeed in shell command
+RUN dos2unix test_runner.sh --safe --quiet
 
 # Build and run tests
 CMD sh -c ${WORKDIR}/test_runner.sh
