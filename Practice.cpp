@@ -7,23 +7,39 @@ using std::string;
 // descending order from greatest (first) to least (third)
 void Practice::sortDescending(int & first, int & second, int & third)
 {
-  if( first < second )
+  int biggest, middle, smallest;
+  if( second > third && second > first )
   {
-    int temp = first;
-    first = second;
-    second = temp;
+    biggest = second;
   }
-  if( first < third )
+  else if( third > second && third > first )
   {
-    int temp = first;
-    first = third;
-    third = temp;
+    biggest = third;
   }
-  if( second < third )
+  else
   {
-    int temp = second;
-    second = third;
-    third = temp;
+    biggest = first;
+  }
+  if( second < third && second < first )
+  {
+    smallest = second;
+  }
+  else if( third < second && third < first )
+  {
+    smallest = third;
+  }
+  else
+  {
+    smallest = first;
+  }
+  if( first != biggest && first != smallest ){
+    middle = first;
+  }
+  else if( second != biggest && second != smallest ){
+    middle = second;
+  }
+  else{
+    middle = third;
   }
 }
 
@@ -40,12 +56,17 @@ bool Practice::isPalindrome(string input)
       input[i] = input[i] - ('a' - 'A');
     }
   }
+
+  bool match = false;
+
   for(unsigned int i=0; i < input.size()/2; i++)
   {
-    if( input[i] != input[input.size()-1-i] )
-      return false;
+    if( input[i] == input[input.size()-1-i] )
+      match = true;
+    else
+      match = false;
   }
-  return true;
+  return match;
 }
 
 // This function receives a string and counts how many times the same character
@@ -53,13 +74,18 @@ bool Practice::isPalindrome(string input)
 // function is case sensative so 'Z' is different than 'z'.
 int Practice::count_starting_repeats(string word)
 {
-    int repetition = 1;
+    int repetition = 0;
     int index = 0;
-    
-    while( index < word.length()-1 && word[index] == word[index+1] ){
-      repetition++;
-      index++;
-    }
+    char letter;
+
+    if( word.length() > 0 )
+      letter = word[0];
+
+    for(unsigned int i=1; i < word.length(); i++){
+      if( word[i] == letter ){
+        repetition++;
+      }
+    }    
 
     return repetition;
 }
