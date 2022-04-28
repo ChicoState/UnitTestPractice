@@ -5,42 +5,37 @@ using std::string;
 
 // Receive three integers and rearrange their values so that they are in
 // descending order from greatest (first) to least (third)
-void Practice::sortDescending(int & first, int & second, int & third)
-{
+void Practice::sortDescending(int & first, int & second, int & third) {
+  
   int biggest, middle, smallest;
-  if( second > third && second > first )
-  {
+
+  if ( second >= third && second >= first ) {
     biggest = second;
+    } else if ( third >= second && third >= first ) {
+      biggest = third;
+    } else {
+      biggest = first;
   }
-  else if( third > second && third > first )
-  {
-    biggest = third;
-  }
-  else
-  {
-    biggest = first;
-  }
-  if( second < third && second < first )
-  {
+
+  if ( second <= third && second <= first ) {
     smallest = second;
-  }
-  else if( third < second && third < first )
-  {
-    smallest = third;
-  }
-  else
-  {
-    smallest = first;
-  }
-  if( first != biggest && first != smallest ){
+    } else if ( third <= second && third <= first ) {
+      smallest = third;
+    } else {
+      smallest = first;
+    }
+
+  if ( first != biggest && first != smallest ){
     middle = first;
-  }
-  else if( second != biggest && second != smallest ){
-    middle = second;
-  }
-  else{
-    middle = third;
-  }
+    } else if ( second != biggest && second != smallest ){
+      middle = second;
+    } else {
+      middle = third;
+    }
+
+  first = biggest;
+  second = middle;
+  third = smallest;
 }
 
 // Receive a string and return whether or not it is strictly a palindrome,
@@ -56,7 +51,6 @@ bool Practice::isPalindrome(string input)
       input[i] = input[i] - ('a' - 'A');
     }
   }
-
   bool match = false;
 
   for(unsigned int i=0; i < input.size()/2; i++)
@@ -75,18 +69,17 @@ bool Practice::isPalindrome(string input)
 int Practice::count_starting_repeats(string word)
 {
     int repetition = 0;
-    int index = 0;
+    // int index = 0;
     char letter;
 
-    if( word.length() > 0 )
+    if ( word.length() > 0 )
       letter = word[0];
 
-    for(unsigned int i=1; i < word.length(); i++){
-      if( word[i] == letter ){
+    for (unsigned int i=1; i < word.length(); i++) {
+      if ( word[i] == letter ) {
         repetition++;
       }
     }    
-
     return repetition;
 }
 
@@ -96,6 +89,15 @@ int Practice::count_starting_repeats(string word)
 // However, if there are no such days found, the function should return nullptr.
 int* Practice::allnighter(int sleep[7])
 {
+  int* pointer = nullptr;
 
-
+  for (int i= 0; i< 7; i++) {
+    
+    if (sleep[i] == 0) {
+      
+      pointer = &sleep[i];
+      return pointer;
+    }
+  }
+  return pointer;
 }
