@@ -94,8 +94,78 @@ int Practice::count_starting_repeats(string word)
 // (as an array of seven integers) and returns a pointer to locate the first instance
 // of an "all nighter" in the array (a day with 0 hours sleep) and returns the pointer. 
 // However, if there are no such days found, the function should return nullptr.
+
+/* Implementation A
+
 int* Practice::allnighter(int sleep[7])
 {
-
-
+ return nullptr;
 }
+*/
+
+/* Implementation B
+
+int* Practice::allnighter(int sleep[7])
+{
+ return & sleep[0];
+}
+*/
+
+/* Implementation C
+
+int* Practice::allnighter(int sleep[7])
+{
+ int i=0;
+ int *place = &sleep[i];
+ while(place && place != nullptr)
+ {
+   place = &sleep[++i];
+ }
+ return place;
+}
+*/
+
+
+/* Implementation D 
+
+int* Practice::allnighter(int sleep[7])
+{
+ int i=0;
+ int *place = &sleep[i];
+ while(place && place != nullptr && i < 7)
+ {
+   place = &sleep[++i];
+ }
+ return place;
+}
+*/
+
+/* Implementation E
+
+int* Practice::allnighter(int sleep[7])
+{
+ int *place = nullptr;
+ for(int i=0; i < 7; i++)
+ {
+    if( sleep[i] == 0 ){
+      place = &sleep[i];
+      return place;
+    }
+ }
+ return place;
+}
+*/
+
+/* Implementation F
+
+int* Practice::allnighter(int sleep[7])
+{
+ int *place = nullptr;
+ for(int i=0; i < 7; i++)
+ {
+   if( sleep[i] == 0 )
+     place = &sleep[i];
+ }
+ return place;
+}
+*/
