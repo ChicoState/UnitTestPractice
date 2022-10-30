@@ -1,10 +1,8 @@
 FROM ubuntu:xenial
-MAINTAINER Kevin Buffardi (kbuffardi@csuchico.edu)
 LABEL title="Unit Testing CPP"
 LABEL version=0.1
 ENV GTEST_REPO=/googletest
 ENV GTEST_DIR=${GTEST_REPO}/googletest
-ENV CXXFLAGS=-std=c++11
 ENV WORKDIR=/usr/src
 WORKDIR /usr/src
 COPY . ${WORKDIR}
@@ -20,13 +18,11 @@ RUN apt-get update && \
             dos2unix
 
 # Setup GoogleTest
-RUN git clone https://github.com/google/googletest ${GTEST_REPO} && \
-    mkdir ${GTEST_REPO}/build && \
-    cd ${GTEST_REPO}/build && \
-    cmake .. -DBUILD_GMOCK=OFF && \
-    make && \
-    make install && \
-    cd ${WORKDIR}
+RUN git clone https://github.com/google/googletest ${GTEST_REPO}
+RUN mkdir ${GTEST_REPO}/build
+RUN cd ${GTEST_REPO}/build && cmake .. -DBUILD_GMOCK=OFF
+RUN make
+RUN cd ${WORKDIR}
 
 # Assure Unix linefeed in shell command
 RUN dos2unix test_runner.sh --safe --quiet
