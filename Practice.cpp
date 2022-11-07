@@ -7,39 +7,21 @@ using std::string;
 // descending order from greatest (first) to least (third)
 void Practice::sortDescending(int & first, int & second, int & third)
 {
-  int biggest, middle, smallest;
-  if( second > third && second > first )
-  {
-    biggest = second;
+  int temp;
+  if( second > first ){
+    temp = first;
+    first = second;
+    second = temp;
   }
-  else if( third > second && third > first )
-  {
-    biggest = third;
+  if( third > first ){
+    temp = first;
+    first = third;
+    third = temp;
   }
-  else
-  {
-    biggest = first;
-  }
-  if( second < third && second < first )
-  {
-    smallest = second;
-  }
-  else if( third < second && third < first )
-  {
-    smallest = third;
-  }
-  else
-  {
-    smallest = first;
-  }
-  if( first != biggest && first != smallest ){
-    middle = first;
-  }
-  else if( second != biggest && second != smallest ){
-    middle = second;
-  }
-  else{
-    middle = third;
+  if( third > second ){
+    temp = third;
+    third = second;
+    second = temp;
   }
 }
 
@@ -48,25 +30,12 @@ void Practice::sortDescending(int & first, int & second, int & third)
 // character in the string, but disregarding case ('x' is the same as 'X')
 bool Practice::isPalindrome(string input)
 {
-  for(unsigned int i=0; i < input.size(); i++)
-  {
-    if( input[i] < 'A' || input[i] > 'Z' )
-    {
-      //change lower case to upper case
-      input[i] = input[i] - ('a' - 'A');
-    }
+  if( input.length() == 0 ){
+    return true;
   }
-
-  bool match = false;
-
-  for(unsigned int i=0; i < input.size()/2; i++)
-  {
-    if( input[i] == input[input.size()-1-i] )
-      match = true;
-    else
-      match = false;
+  else{
+    return ( toupper(input[0]) == toupper(input[input.size()-1]) && isPalindrome(input.substr(1, input.length()-2)) );
   }
-  return match;
 }
 
 // This function receives a string and counts how many times the same character
@@ -74,15 +43,14 @@ bool Practice::isPalindrome(string input)
 // function is case sensative so 'Z' is different than 'z'.
 int Practice::count_starting_repeats(string word)
 {
-    int repetition = 0;
-    int index = 0;
+    int repetition = 1;
     char letter;
 
-    if( word.length() > 0 )
-      letter = word[0];
+    if( word.length() == 0 )
+      return 0;
 
-    for(unsigned int i=1; i < word.length(); i++){
-      if( word[i] == letter ){
+    for(unsigned int i=0; i < word.length() - 1; i++){
+      if( word[i] == word[i+1] ){
         repetition++;
       }
     }    
