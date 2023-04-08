@@ -25,7 +25,7 @@ RUN make
 RUN cd ${WORKDIR}
 
 # Assure Unix linefeed in shell command
-RUN dos2unix test_runner.sh --safe --quiet
+RUN find . -type f -print0 | xargs -0 dos2unix --
 
 # Build and run tests
 CMD sh -c ${WORKDIR}/test_runner.sh
