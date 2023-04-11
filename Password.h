@@ -7,6 +7,8 @@ using std::string;
 
 class Password
 {
+private:
+
 public:
   /*
   The function receives a string counts how many times the same character 
@@ -15,5 +17,11 @@ public:
   'z' and any ASCII characters are allowed.
   */
   int count_leading_characters(string);
+
+  /*
+  returns whether the phrase has both at least one upper-case letter and
+  at least one lower-case letter
+  */
+  bool has_mixed_case(string);
 };
 #endif
