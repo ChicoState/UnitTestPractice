@@ -33,7 +33,7 @@ bool Password::has_mixed_case(string phrase){
   {
     char current=phrase[i];
     int cur=int(current);
-    if(cur>64)
+   /* if(cur>64)
     {
       if(cur<91)
       {
@@ -48,7 +48,16 @@ bool Password::has_mixed_case(string phrase){
       }
     }
     i++;
-  }
+  }*/
+    if(std::isupper(current))
+    {
+      upper=true;
+    }
+    if(std::islower(current))
+    {
+      lower=true;
+    }
+}
   if(upper && lower)
     result=true;
   return result;
