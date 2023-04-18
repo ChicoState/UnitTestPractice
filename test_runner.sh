@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/ash
 
 make clean
 make
-./PasswordTest
+PasswordTest

@@ -1,31 +1,29 @@
-FROM ubuntu:22.04
-LABEL title="Unit Testing CPP"
-LABEL version=0.1
+FROM alpine:latest
+
+LABEL maintainer "srz_zumix <https://github.com/srz-zumix>"
+
+ARG BRANCH_OR_TAG=main
+RUN env \
+  && apk update && apk upgrade \
+  && apk add --no-cache -q -f git cmake make g++ lcov gettext-base jq curl
+
+RUN git clone --depth=1 -b $BRANCH_OR_TAG -q https://github.com/google/googletest.git /googletest
+RUN mkdir -p /googletest/build
+WORKDIR /googletest/build
+RUN cmake .. && make && make install
+RUN mkdir -p /code
+WORKDIR /code
+
+
+COPY . /code/
+
 ENV GTEST_REPO=/googletest
 ENV GTEST_DIR=${GTEST_REPO}/googletest
 ENV WORKDIR=/usr/src
-WORKDIR /usr/src
-COPY . ${WORKDIR}
 
-# Install dependencies
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y \
-            build-essential \
-            g++ \
-            cmake \
-            git-all \
-            dos2unix
 
-# Setup GoogleTest
-RUN git clone https://github.com/google/googletest ${GTEST_REPO}
-RUN mkdir ${GTEST_REPO}/build
-RUN cd ${GTEST_REPO}/build && cmake .. -DBUILD_GMOCK=OFF
-RUN make
-RUN cd ${WORKDIR}
+# sleep forever to keep container running
 
-# Assure Unix linefeed in shell command
-RUN find . -type f -print0 | xargs -0 dos2unix --
+# CMD ash -c "while true; do sleep 1; done"
 
-# Build and run tests
-CMD sh -c ${WORKDIR}/test_runner.sh
+CMD test_runner.sh
