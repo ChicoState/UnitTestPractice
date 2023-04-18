@@ -26,4 +26,4 @@ ENV WORKDIR=/usr/src
 
 # CMD ash -c "while true; do sleep 1; done"
 
-CMD test_runner.sh
+CMD /code/test_runner.sh

@@ -2,4 +2,4 @@
 
 make clean
 make
-PasswordTest
+./PasswordTest
