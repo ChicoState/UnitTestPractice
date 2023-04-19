@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:22.04
 LABEL title="Unit Testing CPP"
 LABEL version=0.1
 ENV GTEST_REPO=/googletest
