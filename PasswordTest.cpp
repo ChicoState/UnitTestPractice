@@ -118,7 +118,52 @@ TEST(PasswordTest, has_upper_and_lower){
 	ASSERT_TRUE(obj.has_mixed_case("Aa"));
 }
 
+TEST(PasswordTest, has_lower_then_upper){
+        Password obj;
+        ASSERT_TRUE(obj.has_mixed_case("aA"));
+}
 
+TEST(PasswordTest, has_upper){
+        Password obj;
+        ASSERT_FALSE(obj.has_mixed_case("AA"));
+}
 
+TEST(PasswordTest, has_lower){
+        Password obj;
+        ASSERT_FALSE(obj.has_mixed_case("aa"));
+}
 
+TEST(PasswordTest, has_upper_and_punct){
+        Password obj;
+        ASSERT_FALSE(obj.has_mixed_case("A?"));
+}
 
+TEST(PasswordTest, has_lower_and_punct){
+        Password obj;
+        ASSERT_FALSE(obj.has_mixed_case("?a"));
+}
+
+TEST(PasswordTest, has_num_and_upper){
+        Password obj;
+        ASSERT_FALSE(obj.has_mixed_case("A1"));
+}
+
+TEST(PasswordTest, has_num_and_lower){
+        Password obj;
+        ASSERT_FALSE(obj.has_mixed_case("2a"));
+}
+
+TEST(PasswordTest, has_many_upper_and_lower){
+        Password obj;
+        ASSERT_TRUE(obj.has_mixed_case("AAAAAAAAAAAAa"));
+}
+
+TEST(PasswordTest, has_space){
+        Password obj;
+        ASSERT_TRUE(obj.has_mixed_case("A a"));
+}
+
+TEST(PasswordTest, empty_string){
+        Password obj;
+        ASSERT_FALSE(obj.has_mixed_case(""));
+}
