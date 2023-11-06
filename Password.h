@@ -15,5 +15,9 @@ public:
   'z' and any ASCII characters are allowed.
   */
   int count_leading_characters(string);
+  
+  bool has_Mixed_Case(string);
+
 };
+
 #endif

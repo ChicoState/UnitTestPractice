@@ -19,3 +19,15 @@ int Password::count_leading_characters(string phrase){
   }
   return repetition;
 }
+
+bool Password::has_Mixed_Case(string password) {
+	switch(password.size()){
+		case 0: return false;
+			break;
+		case 1: return false;
+			break;
+		default:
+			break;
+	}
+}
+
