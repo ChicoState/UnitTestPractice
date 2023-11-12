@@ -29,7 +29,7 @@ public:
   /*
   constructor sets the default password to "ChicoCA-95929"
   */
-  Password()
+  Password();
 
   /*
   receives a password and sets the latest in pass_history to it if and only
