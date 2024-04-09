@@ -14,13 +14,9 @@ class PracticeTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor)
 };
 
-TEST(PasswordTest, smoke_test)
-{
-    ASSERT_TRUE( 1 == 1 );
-}
 TEST(PasswordTest, single_letter_password)
 {
     Password my_password;
 	int actual = my_password.count_leading_characters("Z");
-	ASSERT_EQ(1,actual);
+	ASSERT_EQ(1, actual);
 }
