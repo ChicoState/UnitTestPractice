@@ -44,3 +44,40 @@ TEST(PasswordTest, non_printable_ascii)
 	int actual = my_password.count_leading_characters("\n\n\n\r\t\b");
 	ASSERT_EQ(3, actual);
 }
+
+TEST(PasswordTest, no_mixed_lower)
+{
+	Password my_password;
+	bool actual = my_password.has_mixed_case("hifudhasfhdiua");
+	ASSERT_EQ(false, actual);
+}
+TEST(PasswordTest, no_mixed_upper)
+{
+	Password my_password;
+	bool actual = my_password.has_mixed_case("AGHFHJVBJGEIU");
+	ASSERT_EQ(false, actual);
+}
+TEST(PasswordTest, mixed)
+{
+	Password my_password;
+	bool actual = my_password.has_mixed_case("adcHFb");
+	ASSERT_EQ(true, actual);
+}
+TEST(PasswordTest, no_mixed_empty)
+{
+	Password my_password;
+	bool actual = my_password.has_mixed_case("");
+	ASSERT_EQ(false, actual);
+}
+TEST(PasswordTest, non_printable_no_mixed)
+{
+	Password my_password;
+	bool actual = my_password.has_mixed_case("\vdfbjbjbv\a\rnjuyguu\t");
+	ASSERT_EQ(false, actual);
+}
+TEST(PasswordTest, non_printable_mixed)
+{
+	Password my_password;
+	bool actual = my_password.has_mixed_case("\nfdanf\r\tdnjnDF\a");
+	ASSERT_EQ(true, actual);
+}
