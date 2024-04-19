@@ -34,7 +34,7 @@ public:
   /*
   receives a password and sets the latest in pass_history to it if and only
   if it meets all criteria:
-    1. The password is at least 8 letters long
+    1. The password is at least 8 letters long, but no longer than 20
     2. It has no more than 3 of the same leading characters
     3. It has mixed case (at least one upper case and at least one lower case)
     4. It was not a previous password in the history
