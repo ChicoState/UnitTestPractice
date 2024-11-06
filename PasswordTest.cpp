@@ -5,11 +5,11 @@
 #include <gtest/gtest.h>
 #include "Password.h"
 
-class PracticeTest : public ::testing::Test
+class PasswordTest : public ::testing::Test
 {
 	protected:
-		PracticeTest(){} //constructor runs before each test
-		virtual ~PracticeTest(){} //destructor cleans up after tests
+		PasswordTest(){} //constructor runs before each test
+		virtual ~PasswordTest(){} //destructor cleans up after tests
 		virtual void SetUp(){} //sets up before each test (after constructor)
 		virtual void TearDown(){} //clean up after each test, (before destructor)
 };
