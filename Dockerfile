@@ -1,6 +1,6 @@
-FROM ubuntu:latest
+FROM ubuntu:noble
 LABEL title="CPP Container"
-LABEL version=0.1
+LABEL version=1.0
 ENV GTEST_REPO=/googletest
 ENV GTEST_DIR=${GTEST_REPO}/googletest
 ENV WORKDIR=/usr/src
@@ -16,7 +16,9 @@ RUN apt-get update && \
             g++ \
             cmake \
             git-all \
+            pmccabe \
             dos2unix
+RUN apt-get clean
 
 # Setup GoogleTest
 RUN git clone --depth=1 https://github.com/google/googletest ${GTEST_REPO}
