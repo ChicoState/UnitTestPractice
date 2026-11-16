@@ -20,3 +20,31 @@ TEST(PasswordTest, single_letter_password)
 	int actual = my_password.count_leading_characters("Z");
 	ASSERT_EQ(1, actual);
 }
+
+TEST(PasswordTest, single_number_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("9");
+	ASSERT_EQ(1, actual);
+}
+
+TEST(PasswordTest, uppercase_letter_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	ASSERT_EQ(1, actual);	
+}
+
+TEST(PasswordTest, multiple_symbols_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("!@#$%^&*()<>?:",.");
+	ASSERT_EQ(1, actual);
+}
+
+TEST(PasswordTest, single_word_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("Pair");
+	ASSERT_EQ(1, actual);
+}
