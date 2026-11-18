@@ -1,0 +1,6 @@
+# cpp-container plus gdb, so VS Code can debug inside Docker.
+# Build with:  docker build -t cpp-container-debug -f .vscode/Dockerfile.debug .vscode
+FROM cpp-container
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gdb \
+    && rm -rf /var/lib/apt/lists/*
