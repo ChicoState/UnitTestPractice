@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run tests in cpp-container",
+            "type": "shell",
+            "command": "docker run --rm --user \"$(id -u):$(id -g)\" -v \"${workspaceFolder}\":/usr/src cpp-container",
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": ["relative", "${workspaceFolder}"]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Clean, build with the Makefile, and run PasswordTest inside Docker"
+        },
+        {
+            "label": "Build debug image",
+            "type": "shell",
+            "command": "docker build -q -t cpp-container-debug -f .vscode/Dockerfile.debug .vscode",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "detail": "cpp-container plus gdb (cached after the first build)"
+        },
+        {
+            "label": "Build tests in container (for debugging)",
+            "type": "shell",
+            "command": "docker run --rm --user \"$(id -u):$(id -g)\" -v \"${workspaceFolder}\":/usr/src cpp-container-debug sh -c \"make clean && make\"",
+            "dependsOn": "Build debug image",
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": ["relative", "${workspaceFolder}"]
+            },
+            "group": "build",
+            "detail": "Build PasswordTest inside Docker with debug symbols, without running it"
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug PasswordTest (Docker)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/usr/src/PasswordTest",
+            "args": [],
+            "cwd": "/usr/src",
+            "stopAtEntry": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "Build tests in container (for debugging)",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "docker",
+                "pipeArgs": [
+                    "run", "--rm", "-i",
+                    "--user", "1000:1000",
+                    "--cap-add=SYS_PTRACE",
+                    "--security-opt", "seccomp=unconfined",
+                    "-v", "${workspaceFolder}:/usr/src",
+                    "-w", "/usr/src",
+                    "cpp-container-debug",
+                    "sh", "-c"
+                ],
+                "debuggerPath": "/usr/bin/gdb"
+            },
+            "sourceFileMap": {
+                "/usr/src": "${workspaceFolder}"
+            },
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
