@@ -24,5 +24,5 @@ TEST(PasswordTest, single_letter_password)
 TEST(PasswordTest, word_password) {
 	Password my_password;
 	int actual = my_password.count_words("ApineDriver");
-	ASSERT_EQ(30, actual);
+	ASSERT_EQ(2, actual);
 }

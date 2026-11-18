@@ -19,13 +19,32 @@ int Password::count_leading_characters(string phrase){
   return repetition;
 }
 
+int Password::count_words(string phrase){
+  int count = 0;
+  for (char c : phrase) {
+    if (std::isupper(c)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+
 /*
   receives a string and returns whether it has both at least one upper-case
   letter and at least one lower-case letter
 */
 bool Password::has_mixed_case(string pass){
-  if (pass.isUpper() || pass.islower()) {
-    return true;
+  bool has_upper = false;
+  bool has_lower = false;
+
+  for (char c : pass) {
+    if (std::isupper(c)) {
+      has_upper = true;
+    }
+    if (std::islower(c)) {
+      has_lower = true;
+    }
   }
 
   return false;
