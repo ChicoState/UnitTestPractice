@@ -19,6 +19,7 @@ public:
   */
   int count_leading_characters(string word);
   
+  int count_words(string word);
 
   /*
   receives a string and returns whether it has both at least one upper-case
